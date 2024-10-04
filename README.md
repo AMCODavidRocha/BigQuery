@@ -10,14 +10,17 @@
 
     * What is BigQuery and how it differs from traditional databases.
 
-    * Concepts of datasets, tables, and projects in BigQuery.
+    * Concepts of datasets, tables, schema and projects in BigQuery.
 
 **Task:**
 * Write a summary of the key BigQuery concepts and explain how datasets, tables, and projects are organized.
 * >"BigQuery as I understand it, isa a DB manager  aimed at high volumes of data and with features  that range from serverless, being able to  execute SQL queries, all managed from google cloud, to versatility to simplify data reporting." 
 
-* > "Project->Datasets->Tables:
-A project can contain one or any datasets wich could be named as the databases of a MySQL, while the tables are part of the datasets and this is where the data will be stored.
+* > "Project->Datasets->(Schema)->Tables:
+    >- **Projects:** Are the most high level en BigQuery, datasets and tables are living always in a porject. ("`projectName`")
+    >- **Datasets:** Are containers of tables and views related each and others. (`projectName.datasetName`)
+    >- **Tables:** This are where our data will live in the project at rows and columns forms. (`projectName.datasetName.tableName`)
+    >- **Schemas:** Refers to the definition of the structure of our table, specifies columns names, the type of data each column contains, and other details such as whether a column can have null values ​​or whether it is repeated. (`projectName.datasetName.(schema)tableName`) 
 
 | **TASK**    | :white_check_mark: |
 | :---        |               ---: |
