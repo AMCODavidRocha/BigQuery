@@ -85,3 +85,42 @@
 | **TASK**    | :white_check_mark: |
 | :---        |               ---: |
 ---
+
+***5. User-Defined Functions (UDFs)***
+* Learn how to create user-defined functions (UDFs) in BigQuery using JavaScript or SQL.
+
+**Task:**
+
+* Create a UDF to manipulate or transform data (e.g., formatting dates, custom calculations).
+    >`CREATE FUNCTION`
+`'amco-data-analysis.training_bq.esMayorEdad'(x INT64)`
+`RETURNS STRING`
+`AS (`
+  `CASE`
+    `WHEN x > 17 THEN "Mayor de edad..."`
+    `ELSE "Menor de edad..."`
+  `END`
+`);`
+    - And the function was visible on the "Viewing resources":
+    ![pic](src/img/4.png)
+
+* Implement the UDF through in the web interface 
+    - We just call the function passing the parameterv in any query we want:
+    ![pic](src/img/3.png)
+* Document the use cases for UDFs in BigQuery.
+    - We can call any functions we want and adding a FROM after the the function call, we can pass any field we need to proced.
+    ![pic](src/img/5.png)
+
+
+**Example UDF query in BigQuery:**
+
+>`CREATE OR REPLACE FUNCTION project.dataset.format_date(date_string STRING)
+>RETURNS STRING
+>LANGUAGE js AS """
+>return new Date(date_string).toISOString().split('T')[0];
+"""`
+
+| **TASK**    | :white_check_mark: |
+| :---        |               ---: |
+---
+
