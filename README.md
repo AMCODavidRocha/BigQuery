@@ -67,3 +67,21 @@
 | **TASK**    | :white_check_mark: |
 | :---        |               ---: |
 ---
+
+***4. Working with Views***
+* Learn how to create views in BigQuery to save reusable query results.
+    - There is two differents way to create a view: By code adding the lines `CREATE VIEW 'project.dataset.nameVista' AS <fallowing by the entire code of the view>` or simply saving the code like a view, and adding in the right inputs the names of the project, dataset and in table, the name of the view:
+    ![pic](src/img/2.png)
+* Understand the difference between a regular table and a view.
+    - With a consult of a regular table we read directly of memory de data, meanwhile with views the result of the query are just logical and we dont touch the memory itself
+
+**Task:**
+* Create views based on existing queries to summarize or filter data.
+    - We create a previous view that concat the name and apellido fields, and then create this view with a select * from an existent view and join with the table itself for order asc with the value edad:
+    >`SELECT nombre_completo, edad FROM 'amco-data-analysis.training_bq.nombre_completo' as vista join 'amco-data-analysis.training_bq.personas' as p on vista.id = p.id ORDER BY edad ASC`
+* Document how views can be used in your BigQuery project
+    - The views are a string tool to make querys faster, secure and without touching the data where they live, for use a some code, no matter how much lines they had with no need to retype every time.
+
+| **TASK**    | :white_check_mark: |
+| :---        |               ---: |
+---
