@@ -124,3 +124,55 @@
 | :---        |               ---: |
 ---
 
+***7. BigQuery SDK (Python)***
+* Learn how to interact with BigQuery programmatically using the Python SDK. This will cover authenticating with a GCP Service Account, running queries, and handling results in a Pandas DataFrame.
+
+***7.1. Authentication with GCP Service Account***
+**Task:**
+* Authenticate in the BigQuery SDK client using a service account (will be provided).
+    - We create a class and call it for the conection with the json file for the permission validations:
+    ![pic](src/img/6.png)
+    ![pic](src/img/7.png)
+    
+
+**Example code to authenticate with service account:**
+>`from google.cloud import bigquery`
+`from google.oauth2 import service_account`
+>
+>`credentials = service_account.Credentials.from_service_account_file(`
+    `'path_to_service_account_key.json'`
+`)`
+`client = bigquery.Client(credentials=credentials`
+`project='your_project_id')`
+
+***7.2. Querying BigQuery with SDK and Handling Results as DataFrame***
+
+**Task:**
+* Run a SQL query in BigQuery using the Python SDK.
+    - We add a method in our class and call it:
+    ![pic](src/img/8.png)
+    ![pic](src/img/9.png)
+* Convert the query results into a Pandas DataFrame and handle the data for further analysis.
+    - We just convert using a method in google.cloud[pandas] library and then we can manipulated with all pandas library methods:
+    ![pic](src/img/10.png)
+
+**Example code to run a query and convert to DataFrame:**
+
+>`from google.cloud import bigquery`
+`import pandas as pd`
+` `
+`client = bigquery.Client()`
+` `
+`query = """`
+`SELECT name, SUM(sales)`
+`FROM 'project.dataset.table'`
+`WHERE country = 'US'`
+`GROUP BY name`
+`"""`
+` `
+`query_job = client.query(query)`
+`results = query_job.result()`
+` `
+`#Convert to Pandas DataFrame`
+`df = results.to_dataframe()`
+`print(df)`
