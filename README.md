@@ -124,6 +124,24 @@
 | :---        |               ---: |
 ---
 
+***6. Modify Tables (CRUD Operations)***
+* Research how to perform CRUD operations (Create, Read, Update, Delete) on BigQuery tables.
+
+**Task:**
+
+* Use the BigQuery web interface to:
+
+    * Create a new table.
+    * Insert, update, and delete rows in a table
+
+    - CRUD examples:
+    ![pic](src/img/11.png)
+
+
+| **TASK**    | :white_check_mark: |
+| :---        |               ---: |
+---
+
 ***7. BigQuery SDK (Python)***
 * Learn how to interact with BigQuery programmatically using the Python SDK. This will cover authenticating with a GCP Service Account, running queries, and handling results in a Pandas DataFrame.
 
@@ -137,13 +155,13 @@
 
 **Example code to authenticate with service account:**
 >`from google.cloud import bigquery`
-`from google.oauth2 import service_account`
+>`from google.oauth2 import service_account`
 >
 >`credentials = service_account.Credentials.from_service_account_file(`
-    `'path_to_service_account_key.json'`
-`)`
-`client = bigquery.Client(credentials=credentials`
-`project='your_project_id')`
+>`'path_to_service_account_key.json'`
+>`)`
+>`client = bigquery.Client(credentials=credentials`
+>`project='your_project_id')`
 
 ***7.2. Querying BigQuery with SDK and Handling Results as DataFrame***
 
@@ -159,20 +177,23 @@
 **Example code to run a query and convert to DataFrame:**
 
 >`from google.cloud import bigquery`
-`import pandas as pd`
-` `
-`client = bigquery.Client()`
-` `
-`query = """`
-`SELECT name, SUM(sales)`
-`FROM 'project.dataset.table'`
-`WHERE country = 'US'`
-`GROUP BY name`
-`"""`
-` `
-`query_job = client.query(query)`
-`results = query_job.result()`
-` `
-`#Convert to Pandas DataFrame`
-`df = results.to_dataframe()`
-`print(df)`
+>`import pandas as pd`
+>`client = bigquery.Client()`
+>
+>`query = """`
+>`SELECT name, SUM(sales)`
+>`FROM 'project.dataset.table'`
+>`WHERE country = 'US'`
+>`GROUP BY name`
+>`"""`
+>
+>`query_job = client.query(query)`
+>`results = query_job.result()`
+>
+>`#Convert to Pandas DataFrame`
+>`df = results.to_dataframe()`
+>`print(df)`
+
+| **TASK**    | :white_check_mark: |
+| :---        |               ---: |
+---
